@@ -4,8 +4,10 @@ import {connectRouter, routerMiddleware} from "connected-react-router";
 import gallery from './reducers/reducersGallery'
 import users from './reducers/reducersUsers'
 import thunkMiddleware from "redux-thunk";
-import {loadFromLocalStorage} from "./localStorage";
+import {loadState,saveState} from "./localStorage";
+import axios from '../axios-api';
 export const history = createBrowserHistory();
+
 
 const rootReducer = combineReducers({
     router: connectRouter(history),
@@ -22,26 +24,26 @@ const middleware = [
 
 const enhancers = composeEnhancers(applyMiddleware(...middleware));
 
-const persistedState = loadFromLocalStorage();
+const persistedState = loadState();
 
 const store = createStore(rootReducer, persistedState, enhancers);
 
-// store.subscribe(() => {
-//     saveToLocalStorage({
-//         users: {
-//             user: store.getState().users.user
-//         }
-//     });
-// });
+store.subscribe(() => {
+    saveState({
+        users: {
+            user: store.getState().users.user
+        }
+    })
+});
 
-// axios.interceptors.request.use(config => {
-//     try {
-//         config.headers['Authorization'] = store.getState().users.user.token;
-//     } catch (e) {
-//         // do nothing, user is not logged in
-//     }
-//
-//     return config;
-// });
+axios.interceptors.request.use(config => {
+    try {
+        config.headers['Authorization'] = store.getState().users.user.token;
+    } catch (e) {
+        // do nothing, user is not logged in
+    }
+
+    return config;
+});
 
 export default store;

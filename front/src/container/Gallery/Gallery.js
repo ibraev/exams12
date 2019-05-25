@@ -12,10 +12,10 @@ class Gallery extends Component {
         return (
             <Card>
                 {this.props.gallery.map(galleries => (
-                    <CardBody key={galleries.id}>
-                        <CardImg top width="100%" src={galleries.image} alt="Card image cap" />
-                        <CardTitle>{galleries.title}</CardTitle>
-                        <CardTitle>{galleries.user}</CardTitle>
+                    <CardBody key={galleries._id}>
+                        <CardImg top width="100%" src={'http://localhost:8001/uploads/' + galleries.image} alt="Card image cap" />
+                        <CardTitle><h3>{galleries.title}</h3></CardTitle>
+                        <CardTitle><strong>By: {galleries.user}</strong></CardTitle>
                     </CardBody>
                 ))}
             </Card>
