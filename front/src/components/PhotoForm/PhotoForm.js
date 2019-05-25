@@ -39,10 +39,9 @@ class PhotoForm extends Component {
                             onChange={this.inputChangeHandler}
                         />
                         <Input
-                            type="file" required
+                            type="file"
                             name="image" id="image"
-                            value={this.state.image}
-                            onChange={this.inputChangeHandler}
+                            onChange={this.fileChangeHandler}
                         />
 
                     </Col>
