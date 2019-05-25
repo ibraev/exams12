@@ -12,7 +12,7 @@ const Toolbar = ({user, logout}) => {
   return (
     <Navbar color="light" light expand="md">
       <NavbarBrand tag={RouterNavLink} to="/">Photo Gallery</NavbarBrand>
-
+        <NavbarBrand tag={RouterNavLink} to="/add">New Photo</NavbarBrand>
       <Nav className="ml-auto" navbar>
         {user ? <UserMenu user={user} logout={logout}/> : <AnonymousMenu/>}
       </Nav>
