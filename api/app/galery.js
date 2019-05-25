@@ -23,4 +23,15 @@ router.get('/', async (req, res) => {
     res.send(gallery)
 });
 
+router.post('/', (req, res) => {
+    const galleryData = req.body;
+    if (req.file) {
+        galleryData.image = req.file.filename;
+    }
+    const gallery = new Gallery(galleryData);
+    gallery.save()
+        .then(result => res.send(result))
+        .catch(error => res.status(400).send(error))
+});
+
 module.exports = router;
