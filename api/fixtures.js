@@ -30,12 +30,12 @@ const run = async () => {
 
     await Gallery.create(
         {
-        user:user[0]._id,
+        user:user[0].username,
         title:'Beautiful',
         image:'gallery-1.jpg'
     },
         {
-          user:user[1]._id,
+          user:user[1].username,
           title:'Beautiful',
             image:'gallery-1.jpg'
         }

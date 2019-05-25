@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const GallerySchema = new Schema({
     user:{
-        type: Schema.Types.ObjectId,
+        type: Schema.Types,
         ref: 'User',
         required: true
     },
