@@ -12,7 +12,7 @@ const GallerySchema = new Schema({
         type: String,
         required: true
     },
-    image: String,
+    image: String
 });
 
 const Gallery = mongoose.model('Gallery', GallerySchema);

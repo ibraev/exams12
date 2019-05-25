@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const nanoid = require('nanoid');
 const config = require('./config');
 const Gallery = require('./models/Galery');
-const User = require('./models/Galery');
+const User = require('./models/Users');
 
 
 const run = async () => {
