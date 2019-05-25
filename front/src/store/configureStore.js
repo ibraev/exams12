@@ -1,13 +1,16 @@
 import {createBrowserHistory} from "history";
 import {applyMiddleware, combineReducers, compose, createStore} from "redux";
 import {connectRouter, routerMiddleware} from "connected-react-router";
-
+import gallery from './reducers/reducersGallery'
+import users from './reducers/reducersUsers'
 import thunkMiddleware from "redux-thunk";
 import {loadFromLocalStorage} from "./localStorage";
 export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
     router: connectRouter(history),
+    gallery:gallery,
+    users: users
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
